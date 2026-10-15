@@ -98,8 +98,10 @@ can import `js/network.js` directly to check route counts, skipped routes and fl
   `location.reload()` over CDP; it hangs the socket.
 - **On the 3D panel:** `"C:\Program Files\DisplayXR\Browser\chrome.exe" --user-data-dir=<scratch>
   --enable-logging --v=0 <url>`. The page logs `[flights] firstWoven woven=… confirmed=…`, then
-  `frames=… monoFrames=…` every 5 s, to `chrome_debug.log`. Not yet checked on the panel: depth
-  comfort, and fps with ~2,400 instances and ~40k line segments at 8K.
+  `frames=… monoFrames=…` every 5 s, to `chrome_debug.log`. Checked 2026-10-14 in the normal page
+  layout (buffer 4950×1392): woven and confirmed in ~0.1–0.4 s, about 30 fps (150 frames per 5 s)
+  with full traffic. A run with one airline (`?airline=TN`) gave the same 30 fps, so that's the
+  runtime's pacing, not the scene's load. Not yet checked: full view (F) fps, and depth comfort by eye.
 - URL parameters: `?tour`, `?flat`, `?flight=BA%2026`, `?type=A388`, `?airline=EK`, `?q=`,
   `?color=maker`, `?speed=`, `?mono`.
 
